@@ -31,7 +31,7 @@
             <input type="radio" name="delimiter"/><p><b>{{delimiter}}</b></p>
         </div>
     </div>
-    <div *ngFor="let board of boards">
+    <div class="board-section" *ngFor="let board of boards">
         <app-board [content]="board"></app-board>
     </div>
 </div>

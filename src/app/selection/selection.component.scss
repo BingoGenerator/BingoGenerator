@@ -74,11 +74,13 @@ div {
             }
         }
     }
-    app-board {
-        display: inline-block;
-        // width: 290px;
-        // height: 150px;
-        width: 40%;
-        height: 40%;
+    .board-section {
+        margin-bottom: 20px;
+
+        app-board {
+            display: inline-block;
+            width: 290px;
+            height: 150px;
+        }
     }
 }
