@@ -1,0 +1,37 @@
+<div>
+    <div class="settings-area">
+        <h2>Settings</h2>
+        <div>
+            <div class="text-input settings-section">
+                <p>Content:</p>
+                <textarea></textarea>
+            </div>
+            <div class="rowColSelect settings-section">
+                <div>
+                    <p>Rows:</p>
+                    <p>Columns:</p>
+                </div>
+                <div>
+                    <input (change)="valueChanged($event.target.value, 'rows')" type="number" value="{{rows}}" />
+                    <input (change)="valueChanged($event.target.value, 'columns')" type="number" value="{{columns}}" />
+                </div>
+            </div>
+            <div class="others settings-section">
+                <div>
+                    <p>Boards:</p>
+                    <input type="number" value="{{numOfBoards}}" (change)="valueChanged($event.target.value, 'numOfBoards')"/>
+                </div>
+                <div>
+                    <p>Shuffle:</p>
+                    <input type="checkbox" value="{{doShuffle}}" (change)="valueChanged($event.target.checked, 'doShuffle')" />
+                </div>
+            </div>
+        </div>
+        <div class="delimiter-selection settings-section" *ngFor="let delimiter of obj.keys(delimiters)" (click)="valueChanged(this, 'stringDelimiter') && valueChanged($event, 'stringDelimiter')">
+            <input type="radio" name="delimiter"/><p><b>{{delimiter}}</b></p>
+        </div>
+    </div>
+    <div *ngFor="let board of boards">
+        <app-board [content]="board"></app-board>
+    </div>
+</div>

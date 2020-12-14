@@ -1,0 +1,84 @@
+div {
+    .settings-area {
+        display: block;
+        background-color: rgb(228, 227, 227);
+        padding: 7px 10px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        width: fit-content;
+
+        h2 {
+            margin: 3px 0px;
+        }
+
+        .settings-section {
+            margin: 3px;
+        }
+
+        .text-input {
+            display: inline-block;
+
+            p {
+                display: block;
+                margin: 0;
+            }
+        }
+        
+        .rowColSelect {
+            display: inline-block;
+
+            div {
+                display: inline-block;
+
+                input {
+                    display: block;
+                    margin-left: 0;
+                }
+                p {
+                    display: block;
+                    margin: 0;
+                    margin-right: 8px;
+                }
+            }
+        }
+
+        .others {
+            display: inline-block;
+
+            div {
+                display: block;
+
+                p { 
+                    display: inline;
+                    margin: 0;
+                    margin-right: 8px;
+                }
+    
+                input {
+                    display: inline-block;
+                    margin-left: 0;
+                }
+            }
+        }
+
+        .delimiter-selection {
+            display: inline-block;
+            margin-right: 10px;
+            background-color: rgb(206, 202, 202);
+            border-radius: 4px;
+            padding: 5px;
+
+            input, p {
+                display: inherit;
+                margin: 5px 5px;
+            }
+        }
+    }
+    app-board {
+        display: inline-block;
+        // width: 290px;
+        // height: 150px;
+        width: 40%;
+        height: 40%;
+    }
+}

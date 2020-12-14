@@ -1,0 +1,27 @@
+:host {
+    border: 1px solid black;
+
+    > .row:not(:last-child) {
+        border-bottom: solid 1px black;
+    }
+
+    > .row {
+        display: flex;
+        height: auto;
+
+        > .column:not(:last-child) {
+            border-right: solid 1px black;
+        }
+
+        > .column {
+            display: inline-flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+
+            > div {
+                margin: 0;
+            }
+        }
+    }
+}
