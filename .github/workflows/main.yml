@@ -30,7 +30,7 @@ jobs:
         run: echo Hello, world!
       
       - name: Install dependencies
-        run: npm ci
+        run: ci
         
       - name: Run tests
-        run: npm run test
+        run: run test
