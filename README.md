@@ -1,5 +1,6 @@
 # BingoGenerator
-[![build status](https://github.com/APayerl/BingoGenerator/workflows/CI/badge.svg)](https://github.com/APayerl/BingoGenerator/actions)
+[![build status](https://github.com/APayerl/BingoGenerator/workflows/Build/badge.svg)](https://github.com/APayerl/BingoGenerator/actions)
+[![build status](https://github.com/APayerl/BingoGenerator/workflows/Test/badge.svg)](https://github.com/APayerl/BingoGenerator/actions)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
