@@ -1,0 +1,7 @@
+<div *ngFor="let row of content">
+    <div [style.width.px]="(tileWidth - tileBorderWidth) - (tileBorderWidth / content[0].length)" 
+        [style.height.px]="(tileHeight - tileBorderWidth) - (tileBorderWidth / content.length)" 
+        *ngFor="let cell of row">
+        <p>{{cell}}</p>
+    </div>
+</div>

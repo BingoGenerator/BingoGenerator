@@ -19,8 +19,8 @@ export class SelectionComponent implements OnInit {
         this.defaultElement = "";
         this.rawString = "";
         this.stringDelimiter = Delimiters.ENTER;
-        //this.elements = ["test", "we", "shall", "do", "it", "every", "day"];
-        this.elements = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"];
+        this.elements = ["test", "supercalifradilisticexpialidocious", "we", "shall", "do", "it", "every", "day", "!"];
+        //this.elements = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"];
         this.recreateContent();
     }
 
@@ -36,25 +36,25 @@ export class SelectionComponent implements OnInit {
     rawString: string;
     stringDelimiter: string;
 
-    private create2DArray<T>(arr: T[]): Board<T> {
+    create2DArray<T>(arr: T[], rows: number, columns: number, defaultElement: T): Board<T> {
         let content = [];
         while(arr.length > 0) {
-            content.push(arr.splice(0, this.columns));
-            if(!(content.length < this.rows)) return content;
+            content.push(arr.splice(0, columns));
+            if(content.length >= rows) break;
         }
-        while(content.length > 0 && content[content.length - 1].length < this.columns) {
-            content[content.length - 1].push(this.defaultElement);
+        while(content.length > 0 && content[content.length - 1].length < columns) {
+            content[content.length - 1].push(defaultElement);
         }
-        while(content.length > 0 && content.length < this.rows) {
-            content.push(this.createEmptyRow(this.columns));
+        while(content.length < rows) {
+            content.push(this.createEmptyRow<T>(columns, defaultElement));
         }
         return content;
     }
 
-    private createEmptyRow(columns): any[] {
+    createEmptyRow<T>(columns: number, defaultElement: T): T[] {
         let list = [];
         for(let i = 0; i < columns; i++) {
-            list.push(this.defaultElement);
+            list.push(defaultElement);
         }
         return list;
     }
@@ -63,7 +63,13 @@ export class SelectionComponent implements OnInit {
         this.boards = [];
         for(let i = 0; i < this.numOfBoards; i++) {
             let list = Object.assign([], this.elements);
-            this.boards.push(this.create2DArray((this.doShuffle ? shuffle(list) : list)));
+            this.boards.push(
+                this.create2DArray(
+                    this.doShuffle ? shuffle(list) : list,
+                    this.rows, 
+                    this.columns, 
+                    this.defaultElement
+                    ));
         }
     }
 

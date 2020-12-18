@@ -1,3 +1,1 @@
-export interface Board<T> {
-    [index: number]: T[][];
-}
+export type Board<T> = T[][];

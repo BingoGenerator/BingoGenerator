@@ -1,5 +1,5 @@
 <div [style.height.%]="100/content.length" class="row" *ngFor="let row of content">
-    <div class="column" *ngFor="let col of row">
+    <div [style.width.%]="100/row.length" class="column" *ngFor="let col of row">
         <div>{{col}}</div>
     </div>
 </div>
