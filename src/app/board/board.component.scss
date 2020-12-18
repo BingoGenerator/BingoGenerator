@@ -1,5 +1,6 @@
 :host {
     border: 1px solid black;
+    position: relative;
 
     > .row:not(:last-child) {
         border-bottom: solid 1px black;
@@ -21,6 +22,10 @@
 
             > div {
                 margin: 0;
+                word-wrap: break-word;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
         }
     }
