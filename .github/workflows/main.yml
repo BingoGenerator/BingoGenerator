@@ -49,16 +49,19 @@ jobs:
         run: npm ci
   build:
     needs: install
+    runs-on: ubuntu-latest
     steps:
       - name: npm run build
         run: npm run build
   test:
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: npm run test
         run: npm run test
   deploy:
     needs: test
+    runs-on: ubuntu-latest
     if: ${{ github.ref == 'master' }}
     steps:
       - name: npm run deploy
