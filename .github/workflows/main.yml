@@ -33,7 +33,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm run ci
+      - run: npm ci
       - run: npm run build
   test:
     needs: build
@@ -44,7 +44,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm run ci
+      - run: npm ci
       - run: npm run test
   deploy:
     needs: test
@@ -56,5 +56,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm run ci
+      - run: npm ci
       - run: npm run deploy
