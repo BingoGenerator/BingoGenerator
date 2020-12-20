@@ -2,7 +2,7 @@ name: Main
 
 on:
   push:
-    branches: [ master ]
+    branches: [ * ]
   pull_request:
     branches: [ master ]
 
@@ -56,5 +56,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm ci
-      - run: ng deploy --repo=https://github.com/APayerl/BingoGenerator.git --name="APayerl" --email=6882326+APayerl@users.noreply.github.com
+      - run: npm run ng --deploy --base-href=/BingoGenerator/ --name="APayerl" --email=6882326+APayerl@users.noreply.github.com
