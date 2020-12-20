@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm run build
+      - run: npm run build --prod
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -46,4 +46,4 @@ jobs:
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run ng --deploy --base-href=apayerl.github.io/BingoGenerator --name="APayerl" --email=6882326+APayerl@users.noreply.github.com
+        run: npm run ng --deploy --base-href=APayerl.github.com/BingoGenerator --name="APayerl" --email=6882326+APayerl@users.noreply.github.com
