@@ -57,4 +57,4 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm run deploy
+      - run: ng deploy --repo=https://github.com/APayerl/BingoGenerator.git --name="APayerl" --email=6882326+APayerl@users.noreply.github.com
