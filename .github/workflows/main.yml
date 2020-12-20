@@ -23,6 +23,10 @@ jobs:
   build:
     needs: install
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12]
+        
     steps:
       - run: npm run ci
       - run: npm run build
