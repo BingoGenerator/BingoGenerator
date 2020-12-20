@@ -46,4 +46,4 @@ jobs:
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run ng --deploy --base-href=/BingoGenerator/ --name="APayerl" --email=6882326+APayerl@users.noreply.github.com
+        run: npm run ng --deploy --base-href=/BingoGenerator --name="APayerl" --email=6882326+APayerl@users.noreply.github.com
