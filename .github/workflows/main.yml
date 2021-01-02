@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
+      - run: npm ci --prefer-offline
       - run: npm run test
   deploy:
     needs: test
@@ -34,4 +34,4 @@ jobs:
           BASE_BRANCH: master
           BRANCH: gh-pages
           FOLDER: dist/bingo-generator
-          BUILD_SCRIPT: npm ci && npm run build -- --prod
+          BUILD_SCRIPT: npm ci --prefer-offline && npm run build -- --prod
