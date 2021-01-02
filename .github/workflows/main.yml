@@ -32,11 +32,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run test
-      - run: echo ${GITHUB_REF##*/}
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    if: ${GITHUB_REF##*/} == 'master'
     steps:
       - uses: actions/checkout@v2
       - name: Node 12
