@@ -34,4 +34,6 @@ jobs:
           BASE_BRANCH: master
           BRANCH: gh-pages
           FOLDER: dist/bingo-generator
+          CLEAN: true
+          CLEAN_EXCLUDE: '[CNAME]'
           BUILD_SCRIPT: npm ci --prefer-offline && npm run build -- --prod
