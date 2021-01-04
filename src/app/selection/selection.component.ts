@@ -17,7 +17,7 @@ export class SelectionComponent implements OnInit {
         this.columns = 3;
         this.doShuffle = false;
         this.defaultElement = "";
-        this.rawString = "";
+        this.rawString = undefined;
         this.stringDelimiter = Delimiters.ENTER;
         this.elements = ["test", "supercalifradilisticexpialidocious", "we", "shall", "do", "it", "every", "day", "!"];
         //this.elements = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"];
@@ -59,8 +59,11 @@ export class SelectionComponent implements OnInit {
         return list;
     }
 
-    private recreateContent() {
+    recreateContent() {
         this.boards = [];
+        if(this.rawString != undefined) {
+            this.elements = this.splitString(this.rawString, this.stringDelimiter);
+        }
         for(let i = 0; i < this.numOfBoards; i++) {
             let list = Object.assign([], this.elements);
             this.boards.push(
@@ -71,6 +74,20 @@ export class SelectionComponent implements OnInit {
                     this.defaultElement
                     ));
         }
+    }
+
+    splitString(content: string, delimiter: string): string[] {
+        let list = [];
+        for(let result = 0, last = 0; result = content.indexOf(delimiter, last);) {
+            if(result === -1) {
+                list.push(content.slice(last, content.length));
+                break;
+            } else {
+                list.push(content.slice(last, result));
+            }
+            last = result + 1;
+        }
+        return list;
     }
 
     public valueChanged(value, property: string) {

@@ -66,4 +66,24 @@ describe('SelectionComponent', () => {
     it('createEmptyRow: 3', () => {
         expect(component.createEmptyRow(3, "")).toEqual(["", "", ""]);
     });
+
+    it('splitString: enter', () => {
+        expect(component.splitString("test\nwe\nshall", "\n")).toEqual(["test", "we", "shall"]);
+    });
+
+    it('splitString: space', () => {
+        expect(component.splitString("test we shall", " ")).toEqual(["test", "we", "shall"]);
+    });
+
+    it('splitString: ,', () => {
+        expect(component.splitString("test,we,shall", ",")).toEqual(["test", "we", "shall"]);
+    });
+
+    it('splitString: :', () => {
+        expect(component.splitString("test:we:shall", ":")).toEqual(["test", "we", "shall"]);
+    });
+
+    it('splitString: ;', () => {
+        expect(component.splitString("test;we;shall", ";")).toEqual(["test", "we", "shall"]);
+    });
 });
