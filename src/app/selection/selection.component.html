@@ -32,9 +32,6 @@
         </div>
     </div>
     <div class="board-section" *ngFor="let board of boards">
-        <app-board [content]="board"></app-board>
-    </div>
-    <div class="board-section" *ngFor="let board of boards">
         <app-detail-board [content]="board" [tileHeight]="30" [tileWidth]="50" [tileBorderWidth]="1"></app-detail-board>
     </div>
 </div>
