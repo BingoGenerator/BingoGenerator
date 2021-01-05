@@ -2,7 +2,7 @@
     margin: 0;
     overflow: hidden;
 
-    div {
+    > div {
         display: block;
         width: fit-content;
         background-color: black;
@@ -19,7 +19,7 @@
             // [style.border-width.px]="tileBorderWidth"
             // [style.border-style]="'solid'"
 
-            p {
+            > p {
                 position: relative;
                 text-align: center;
                 top: 50%;
@@ -35,6 +35,12 @@
         > div:last-child {
             margin-right: 1px;
             //margin-bottom: 1px;
+        }
+    }
+
+    > div:last-child {
+        > div {
+            margin-bottom: 1px;
         }
     }
 }
