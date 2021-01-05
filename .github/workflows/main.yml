@@ -27,12 +27,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Build and Deploy
+      - name: Install
+        run: npm ci --prefer-offline
+      - name: Build
+        run: npm run build -- --prod
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
-        env:
-          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BASE_BRANCH: master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: dist/bingo-generator
-          CLEAN: true
-          BUILD_SCRIPT: npm ci --prefer-offline && npm run build -- --prod
