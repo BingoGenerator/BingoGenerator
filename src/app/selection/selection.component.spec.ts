@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Delimiters } from '../utilities/delimiters';
 import { Board } from '../utilities/interfaces';
 
 import { SelectionComponent } from './selection.component';
@@ -68,22 +69,22 @@ describe('SelectionComponent', () => {
     });
 
     it('splitString: enter', () => {
-        expect(component.splitString("test\nwe\nshall", "\n")).toEqual(["test", "we", "shall"]);
+        expect(component.splitString("test\nwe\nshall", Delimiters.find(x => x.displayName == "ENTER"))).toEqual(["test", "we", "shall"]);
     });
 
     it('splitString: space', () => {
-        expect(component.splitString("test we shall", " ")).toEqual(["test", "we", "shall"]);
+        expect(component.splitString("test we shall", Delimiters.find(x => x.displayName == "SPACE"))).toEqual(["test", "we", "shall"]);
     });
 
     it('splitString: ,', () => {
-        expect(component.splitString("test,we,shall", ",")).toEqual(["test", "we", "shall"]);
+        expect(component.splitString("test,we,shall", Delimiters.find(x => x.displayName == ","))).toEqual(["test", "we", "shall"]);
     });
 
     it('splitString: :', () => {
-        expect(component.splitString("test:we:shall", ":")).toEqual(["test", "we", "shall"]);
+        expect(component.splitString("test:we:shall", Delimiters.find(x => x.displayName == ":"))).toEqual(["test", "we", "shall"]);
     });
 
     it('splitString: ;', () => {
-        expect(component.splitString("test;we;shall", ";")).toEqual(["test", "we", "shall"]);
+        expect(component.splitString("test;we;shall", Delimiters.find(x => x.displayName == ";"))).toEqual(["test", "we", "shall"]);
     });
 });
