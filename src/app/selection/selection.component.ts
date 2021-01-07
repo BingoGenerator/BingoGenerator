@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { shuffle } from 'underscore';
-import { Delimiters } from '../utilities/delimiters';
+import { Delimiters, Delimiter } from '../utilities/delimiters';
 import { Board } from '../utilities/interfaces';
 import { environment } from '../../environments/environment';
 
@@ -18,9 +18,9 @@ export class SelectionComponent implements OnInit {
         this.columns = 3;
         this.doShuffle = false;
         this.defaultElement = "";
-        this.rawString = undefined;
-        this.stringDelimiter = Delimiters.ENTER;
-        this.elements = this.splitString(environment.exampleString, Delimiters.SPACE);
+        this.rawString = environment.exampleString;
+        this.stringDelimiter = Delimiters.find(x => x.displayName == Delimiters[4].displayName);
+        this.elements = [];
         this.recreateContent();
     }
 
@@ -34,7 +34,8 @@ export class SelectionComponent implements OnInit {
     defaultElement: string;
     elements: any[];
     rawString: string;
-    stringDelimiter: string;
+    stringDelimiter: Delimiter;
+    console = console;
 
     create2DArray<T>(arr: T[], rows: number, columns: number, defaultElement: T): Board<T> {
         let content = [];
@@ -61,9 +62,7 @@ export class SelectionComponent implements OnInit {
 
     recreateContent() {
         this.boards = [];
-        if(this.rawString != undefined) {
-            this.elements = this.splitString(this.rawString, this.stringDelimiter);
-        }
+        this.elements = this.splitString(this.rawString, this.stringDelimiter);
         for(let i = 0; i < this.numOfBoards; i++) {
             let list = Object.assign([], this.elements);
             this.boards.push(
@@ -76,9 +75,9 @@ export class SelectionComponent implements OnInit {
         }
     }
 
-    splitString(content: string, delimiter: string): string[] {
+    splitString(content: string, delimiter: Delimiter): string[] {
         let list = [];
-        for(let result = 0, last = 0; result = content.indexOf(delimiter, last);) {
+        for(let result = 0, last = 0; result = content.indexOf(delimiter.value, last);) {
             if(result === -1) {
                 list.push(content.slice(last, content.length));
                 break;

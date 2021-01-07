@@ -27,8 +27,8 @@
                 </div>
             </div>
         </div>
-        <div class="delimiter-selection settings-section" *ngFor="let delimiter of obj.keys(delimiters)" (click)="valueChanged(this, 'stringDelimiter') && valueChanged($event, 'stringDelimiter')">
-            <input type="radio" name="delimiter"/><p><b>{{delimiter}}</b></p>
+        <div class="delimiter-selection settings-section" *ngFor="let delimiter of delimiters" (click)="valueChanged(delimiter, 'stringDelimiter')">
+            <input type="radio" [checked]="stringDelimiter == delimiter" name="delimiter"/><p><b>{{delimiter.displayName}}</b></p>
         </div>
     </div>
     <div class="board-section" *ngFor="let board of boards">
