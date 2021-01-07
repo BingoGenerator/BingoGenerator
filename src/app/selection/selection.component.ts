@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { shuffle } from 'underscore';
 import { Delimiters } from '../utilities/delimiters';
 import { Board } from '../utilities/interfaces';
+import { environment } from '../../environments/environment';
 
 @Component({
     selector: 'app-selection',
@@ -19,8 +20,7 @@ export class SelectionComponent implements OnInit {
         this.defaultElement = "";
         this.rawString = undefined;
         this.stringDelimiter = Delimiters.ENTER;
-        this.elements = ["test", "supercalifradilisticexpialidocious", "we", "shall", "do", "it", "every", "day", "!"];
-        //this.elements = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"];
+        this.elements = this.splitString(environment.exampleString, Delimiters.SPACE);
         this.recreateContent();
     }
 
