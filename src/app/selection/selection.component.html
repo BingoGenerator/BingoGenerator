@@ -4,7 +4,7 @@
         <div>
             <div class="text-input settings-section">
                 <p>Content:</p>
-                <textarea (change)="valueChanged($event.target.value, 'rawString')"></textarea>
+                <textarea (input)="valueChanged($event.target.value, 'rawString')"></textarea>
             </div>
             <div class="rowColSelect settings-section">
                 <div>

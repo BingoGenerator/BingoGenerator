@@ -20,7 +20,6 @@ export class SelectionComponent implements OnInit {
         this.stringDelimiter = Delimiters.find(x => x.displayName == Delimiters[4].displayName);
         this.rawString = "";
         this.exampleText = "Here's an example that contains numbers 1 to ~!";
-        this.elements = [];
         this.recreateContent();
     }
 
@@ -32,7 +31,6 @@ export class SelectionComponent implements OnInit {
     columns: number;
     doShuffle: boolean;
     defaultElement: string;
-    elements: any[];
     rawString: string;
     stringDelimiter: Delimiter;
     exampleText: string;
@@ -63,9 +61,13 @@ export class SelectionComponent implements OnInit {
 
     recreateContent() {
         this.boards = [];
-        this.elements = this.splitString(this.rawString.length == 0 ? this.exampleText : this.rawString, this.stringDelimiter);
+        let elements: any[] = this.splitString(
+            this.rawString.length == 0 ? 
+                this.exampleText : this.rawString.length == 1 && this.rawString === ' ' ? 
+                    this.rawString : this.rawString.trimEnd(), 
+            this.stringDelimiter);
         for(let i = 0; i < this.numOfBoards; i++) {
-            let list = Object.assign([], this.elements);
+            let list = Object.assign([], elements);
             this.boards.push(
                 this.create2DArray(
                     this.doShuffle ? shuffle(list) : list,
