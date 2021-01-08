@@ -16,7 +16,7 @@ export class SelectionComponent implements OnInit {
         this.rows = 3;
         this.columns = 3;
         this.doShuffle = false;
-        this.defaultElement = "";
+        this.defaultElement = " ";
         this.stringDelimiter = Delimiters.find(x => x.displayName == Delimiters[4].displayName);
         this.rawString = "Here's an example that contains numbers 1 to ~!";
         this.elements = [];
