@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { shuffle } from 'underscore';
 import { Delimiters, Delimiter } from '../utilities/delimiters';
 import { Board } from '../utilities/interfaces';
-import { environment } from '../../environments/environment';
 
 @Component({
     selector: 'app-selection',
@@ -18,8 +17,8 @@ export class SelectionComponent implements OnInit {
         this.columns = 3;
         this.doShuffle = false;
         this.defaultElement = "";
-        this.rawString = environment.exampleString;
         this.stringDelimiter = Delimiters.find(x => x.displayName == Delimiters[4].displayName);
+        this.rawString = "Here's an example that contains numbers 1 to ~!";
         this.elements = [];
         this.recreateContent();
     }
