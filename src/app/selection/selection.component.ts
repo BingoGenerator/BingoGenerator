@@ -18,7 +18,8 @@ export class SelectionComponent implements OnInit {
         this.doShuffle = false;
         this.defaultElement = " ";
         this.stringDelimiter = Delimiters.find(x => x.displayName == Delimiters[4].displayName);
-        this.rawString = "Here's an example that contains numbers 1 to ~!";
+        this.rawString = "";
+        this.exampleText = "Here's an example that contains numbers 1 to ~!";
         this.elements = [];
         this.recreateContent();
     }
@@ -34,6 +35,7 @@ export class SelectionComponent implements OnInit {
     elements: any[];
     rawString: string;
     stringDelimiter: Delimiter;
+    exampleText: string;
     console = console;
 
     create2DArray<T>(arr: T[], rows: number, columns: number, defaultElement: T): Board<T> {
@@ -61,7 +63,7 @@ export class SelectionComponent implements OnInit {
 
     recreateContent() {
         this.boards = [];
-        this.elements = this.splitString(this.rawString, this.stringDelimiter);
+        this.elements = this.splitString(this.rawString.length == 0 ? this.exampleText : this.rawString, this.stringDelimiter);
         for(let i = 0; i < this.numOfBoards; i++) {
             let list = Object.assign([], this.elements);
             this.boards.push(
