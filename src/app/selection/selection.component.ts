@@ -79,12 +79,10 @@ export class SelectionComponent implements OnInit {
     }
 
     trimEnd(content: string, delimiter: Delimiter): string {
-        let i = content.length - 1;
-        while(i >= 0) {
+        while(content.length > 0) {
             content = content.trim();
-            if(content[i] === delimiter.value) {
-                content = content.substring(0, i);
-                i -= 1;
+            if(content[content.length - 1] === delimiter.value) {
+                content = content.substring(0, content.length - 1);
             } else {
                 break;
             }
@@ -110,7 +108,6 @@ export class SelectionComponent implements OnInit {
     }
 
     public valueChanged(value, property: string) {
-        console.log(value);
         this[property] = value;
         this.recreateContent();
     }
