@@ -87,4 +87,24 @@ describe('SelectionComponent', () => {
     it('splitString: ;', () => {
         expect(component.splitString("test;we;shall", Delimiters.find(x => x.displayName == ";"))).toEqual(["test", "we", "shall"]);
     });
+
+    it('trimEnd: ;', () => {
+        expect(component.trimEnd("test;we;shall", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
+    });
+
+    it('trimEnd: ;', () => {
+        expect(component.trimEnd("test;we;shall ", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
+    });
+
+    it('trimEnd: ;', () => {
+        expect(component.trimEnd("test;we;shall;", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
+    });
+
+    it('trimEnd: ;', () => {
+        expect(component.trimEnd("test;we;shall; ", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
+    });
+
+    it('trimEnd: ;', () => {
+        expect(component.trimEnd("", Delimiters.find(x => x.displayName == ";"))).toEqual(" ");//Return string containing Alt + 255
+    });
 });

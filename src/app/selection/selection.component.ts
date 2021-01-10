@@ -61,11 +61,11 @@ export class SelectionComponent implements OnInit {
 
     recreateContent() {
         this.boards = [];
-        let elements: any[] = this.splitString(
-            this.rawString.length == 0 ? 
-                this.exampleText : this.rawString.length == 1 && this.rawString === ' ' ? 
-                    this.rawString : this.rawString.trimEnd(), 
-            this.stringDelimiter);
+        
+        if(this.rawString.length == 0) this.rawString = this.exampleText;
+        this.rawString = this.trimEnd(this.rawString, this.stringDelimiter);
+
+        let elements: any[] = this.splitString(this.rawString, this.stringDelimiter);
         for(let i = 0; i < this.numOfBoards; i++) {
             let list = Object.assign([], elements);
             this.boards.push(
@@ -76,6 +76,23 @@ export class SelectionComponent implements OnInit {
                     this.defaultElement
                     ));
         }
+    }
+
+    trimEnd(content: string, delimiter: Delimiter): string {
+        let i = content.length - 1;
+        while(i >= 0) {
+            content = content.trim();
+            if(content[i] === delimiter.value) {
+                content = content.substring(0, i);
+                i -= 1;
+            } else {
+                break;
+            }
+        }
+        if(content.length === 0) {
+            content = " ";//Alt + 255
+        }
+        return content;
     }
 
     splitString(content: string, delimiter: Delimiter): string[] {
