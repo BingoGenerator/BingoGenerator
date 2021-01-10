@@ -88,23 +88,23 @@ describe('SelectionComponent', () => {
         expect(component.splitString("test;we;shall", Delimiters.find(x => x.displayName == ";"))).toEqual(["test", "we", "shall"]);
     });
 
-    it('trimEnd: ;', () => {
+    it('trimEnd: ; - clean', () => {
         expect(component.trimEnd("test;we;shall", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
     });
 
-    it('trimEnd: ;', () => {
+    it('trimEnd: ; - end with space', () => {
         expect(component.trimEnd("test;we;shall ", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
     });
 
-    it('trimEnd: ;', () => {
+    it('trimEnd: ; - end with ;', () => {
         expect(component.trimEnd("test;we;shall;", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
     });
 
-    it('trimEnd: ;', () => {
+    it('trimEnd: ; - end with ; and space', () => {
         expect(component.trimEnd("test;we;shall; ", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
     });
 
-    it('trimEnd: ;', () => {
+    it('trimEnd: ; - empty string', () => {
         expect(component.trimEnd("", Delimiters.find(x => x.displayName == ";"))).toEqual(" ");//Return string containing Alt + 255
     });
 });
