@@ -50,7 +50,7 @@
             </option>
         </select>
     </div>
-    <div class="board-section" *ngFor="let board of boards">
-        <app-detail-board [content]="board" [tileHeight]="cellHeight" [tileWidth]="cellWidth" [tileBorderWidth]="cellBorderWidth" [borderColor]="cellBorderColor"></app-detail-board>
+    <div class="board-section">
+        <app-detail-board *ngFor="let board of boards" [content]="board" [tileHeight]="cellHeight" [tileWidth]="cellWidth" [tileBorderWidth]="cellBorderWidth" [borderColor]="cellBorderColor"></app-detail-board>
     </div>
 </div>

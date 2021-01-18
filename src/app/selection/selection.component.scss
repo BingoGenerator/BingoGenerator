@@ -90,10 +90,13 @@ div {
     .board-section {
         margin-bottom: 20px;
 
-        app-board {
+        app-detail-board {
             display: inline-block;
-            width: 290px;
-            height: 150px;
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+        app-detail-board:nth-child(1) {
+            margin-left: 0px;
         }
     }
 }
