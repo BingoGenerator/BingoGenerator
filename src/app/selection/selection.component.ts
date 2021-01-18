@@ -17,6 +17,10 @@ export class SelectionComponent implements OnInit {
         this.columns = 3;
         this.doShuffle = false;
         this.defaultElement = " ";
+        this.cellWidth = 80;
+        this.cellHeight = 50;
+        this.cellBorderWidth = 1;
+        this.cellBorderColor = "black";
         this.stringDelimiter = Delimiters.find(x => x.displayName == Delimiters[4].displayName);
         this.rawString = "";
         this.exampleText = "Here's an example that contains numbers 1 to ~!";
@@ -34,6 +38,10 @@ export class SelectionComponent implements OnInit {
     rawString: string;
     stringDelimiter: Delimiter;
     exampleText: string;
+    cellWidth: number;
+    cellHeight: number;
+    cellBorderWidth: number;
+    cellBorderColor: string;
     console = console;
 
     create2DArray<T>(arr: T[], rows: number, columns: number, defaultElement: T): Board<T> {

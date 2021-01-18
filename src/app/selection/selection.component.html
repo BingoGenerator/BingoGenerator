@@ -25,13 +25,32 @@
                     <p>Shuffle:</p>
                     <input type="checkbox" value="{{doShuffle}}" (change)="valueChanged($event.target.checked, 'doShuffle')" />
                 </div>
+                <div>
+                    <p>Cell width:</p>
+                    <input type="number" value="{{cellWidth}}" (change)="valueChanged($event.target.value, 'cellWidth')" />
+                </div>
+                <div>
+                    <p>Cell height:</p>
+                    <input type="number" value="{{cellHeight}}" (change)="valueChanged($event.target.value, 'cellHeight')" />
+                </div>
+                <div>
+                    <p>Border width:</p>
+                    <input type="number" value="{{cellBorderWidth}}" (change)="valueChanged($event.target.value, 'cellBorderWidth')" />
+                </div>
+                <div>
+                    <p>Border color:</p>
+                    <div (click)="$event.target.nextSibling.style.display = $event.target.nextSibling.style.display == 'inline-block' ? 'none' : 'inline-block'" [style.backgroundColor]="cellBorderColor" [style.height.px]="16" [style.width.px]="16"></div>
+                    <color-chrome [color]="cellBorderColor" (onChangeComplete)="valueChanged($event.color.hex, 'cellBorderColor')"></color-chrome>
+                </div>
             </div>
         </div>
-        <div class="delimiter-selection settings-section" *ngFor="let delimiter of delimiters" (click)="valueChanged(delimiter, 'stringDelimiter')">
-            <input type="radio" [checked]="stringDelimiter == delimiter" name="delimiter"/><p><b>{{delimiter.displayName}}</b></p>
-        </div>
+        <p style="display: inline-block;">Delimiter:</p><select class="settings-section">
+            <option *ngFor="let delimiter of delimiters" selected="stringDelimiter == delimiter" (click)="valueChanged(delimiter, 'stringDelimiter')" value="delimiter">
+                <b>{{delimiter.displayName}}</b>
+            </option>
+        </select>
     </div>
     <div class="board-section" *ngFor="let board of boards">
-        <app-detail-board [content]="board" [tileHeight]="30" [tileWidth]="50" [tileBorderWidth]="1"></app-detail-board>
+        <app-detail-board [content]="board" [tileHeight]="cellHeight" [tileWidth]="cellWidth" [tileBorderWidth]="cellBorderWidth" [borderColor]="cellBorderColor"></app-detail-board>
     </div>
 </div>

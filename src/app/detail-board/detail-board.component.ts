@@ -15,4 +15,5 @@ export class DetailBoardComponent implements OnInit {
     @Input() tileWidth: number;
     @Input() tileHeight: number;
     @Input() tileBorderWidth: number;
+    @Input() borderColor: string;
 }

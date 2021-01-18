@@ -47,6 +47,19 @@ div {
 
             div {
                 display: block;
+                margin-bottom: 5px;
+
+                div {
+                    display: inline-block;
+                    cursor: pointer;
+                    margin: 0;
+                    position: relative;
+                }
+
+                color-chrome {
+                    position: absolute;
+                    display: none;
+                }
 
                 p { 
                     display: inline;
