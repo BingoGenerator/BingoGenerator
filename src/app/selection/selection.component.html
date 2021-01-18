@@ -12,14 +12,14 @@
                     <p>Columns:</p>
                 </div>
                 <div>
-                    <input (change)="valueChanged($event.target.value, 'rows')" type="number" value="{{rows}}" />
-                    <input (change)="valueChanged($event.target.value, 'columns')" type="number" value="{{columns}}" />
+                    <input min="1" (change)="valueChanged($event.target.value, 'rows')" type="number" value="{{rows}}" />
+                    <input min="1" (change)="valueChanged($event.target.value, 'columns')" type="number" value="{{columns}}" />
                 </div>
             </div>
             <div class="others settings-section">
                 <div>
                     <p>Boards:</p>
-                    <input type="number" value="{{numOfBoards}}" (change)="valueChanged($event.target.value, 'numOfBoards')"/>
+                    <input min="1" type="number" value="{{numOfBoards}}" (change)="valueChanged($event.target.value, 'numOfBoards')"/>
                 </div>
                 <div>
                     <p>Shuffle:</p>
@@ -27,15 +27,15 @@
                 </div>
                 <div>
                     <p>Cell width:</p>
-                    <input type="number" value="{{cellWidth}}" (change)="valueChanged($event.target.value, 'cellWidth')" />
+                    <input min="5" type="number" value="{{cellWidth}}" (change)="valueChanged($event.target.value, 'cellWidth')" />
                 </div>
                 <div>
                     <p>Cell height:</p>
-                    <input type="number" value="{{cellHeight}}" (change)="valueChanged($event.target.value, 'cellHeight')" />
+                    <input min="5" type="number" value="{{cellHeight}}" (change)="valueChanged($event.target.value, 'cellHeight')" />
                 </div>
                 <div>
                     <p>Border width:</p>
-                    <input disabled type="number" value="{{cellBorderWidth}}" (change)="valueChanged($event.target.value, 'cellBorderWidth')" />
+                    <input min="0" disabled type="number" value="{{cellBorderWidth}}" (change)="valueChanged($event.target.value, 'cellBorderWidth')" />
                 </div>
                 <div>
                     <p>Border color:</p>
