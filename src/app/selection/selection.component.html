@@ -44,8 +44,9 @@
                 </div>
             </div>
         </div>
-        <p style="display: inline-block;">Delimiter:</p><select class="settings-section">
-            <option *ngFor="let delimiter of delimiters" selected="stringDelimiter == delimiter" (click)="valueChanged(delimiter, 'stringDelimiter')" value="delimiter">
+        <p style="display: inline-block;">Delimiter:</p>
+        <select class="settings-section" [ngModel]="stringDelimiter" (ngModelChange)="valueChanged($event, 'stringDelimiter')">
+            <option *ngFor="let delimiter of delimiters" [ngValue]="delimiter">
                 <b>{{delimiter.displayName}}</b>
             </option>
         </select>
