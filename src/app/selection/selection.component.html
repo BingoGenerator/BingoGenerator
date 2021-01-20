@@ -12,30 +12,30 @@
                     <p>Columns:</p>
                 </div>
                 <div>
-                    <input min="1" (change)="valueChanged($event.target.value, 'rows')" type="number" value="{{rows}}" />
-                    <input min="1" (change)="valueChanged($event.target.value, 'columns')" type="number" value="{{columns}}" />
+                    <input type="number" min="1" [ngModel]="rows" (ngModelChange)="valueChanged($event, 'rows')" />
+                    <input type="number" min="1" [ngModel]="columns" (ngModelChange)="valueChanged($event, 'columns')" />
                 </div>
             </div>
             <div class="others settings-section">
                 <div>
                     <p>Boards:</p>
-                    <input min="1" type="number" value="{{numOfBoards}}" (change)="valueChanged($event.target.value, 'numOfBoards')"/>
+                    <input min="1" type="number" [ngModel]="numOfBoards" (ngModelChange)="valueChanged($event, 'numOfBoards')" />
                 </div>
                 <div>
                     <p>Shuffle:</p>
-                    <input type="checkbox" value="{{doShuffle}}" (change)="valueChanged($event.target.checked, 'doShuffle')" />
+                    <input type="checkbox" [ngModel]="doShuffle" (ngModelChange)="valueChanged($event, 'doShuffle')" />
                 </div>
                 <div>
                     <p>Cell width:</p>
-                    <input min="5" type="number" value="{{cellWidth}}" (change)="valueChanged($event.target.value, 'cellWidth')" />
+                    <input min="5" type="number" [ngModel]="cellWidth" (ngModelChange)="valueChanged($event, 'cellWidth')" />
                 </div>
                 <div>
                     <p>Cell height:</p>
-                    <input min="5" type="number" value="{{cellHeight}}" (change)="valueChanged($event.target.value, 'cellHeight')" />
+                    <input min="5" type="number" [ngModel]="cellHeight" (ngModelChange)="valueChanged($event, 'cellHeight')" />
                 </div>
                 <div>
                     <p>Border width:</p>
-                    <input min="0" disabled type="number" value="{{cellBorderWidth}}" (change)="valueChanged($event.target.value, 'cellBorderWidth')" />
+                    <input min="0" disabled type="number" [ngModel]="cellBorderWidth" (ngModelChange)="valueChanged($event, 'cellBorderWidth')" />
                 </div>
                 <div>
                     <p>Border color:</p>
@@ -44,8 +44,9 @@
                 </div>
             </div>
         </div>
-        <p style="display: inline-block;">Delimiter:</p><select class="settings-section">
-            <option *ngFor="let delimiter of delimiters" selected="stringDelimiter == delimiter" (click)="valueChanged(delimiter, 'stringDelimiter')" value="delimiter">
+        <p style="display: inline-block;">Delimiter:</p>
+        <select class="settings-section" [ngModel]="stringDelimiter" (ngModelChange)="valueChanged($event, 'stringDelimiter')">
+            <option *ngFor="let delimiter of delimiters" [ngValue]="delimiter">
                 <b>{{delimiter.displayName}}</b>
             </option>
         </select>

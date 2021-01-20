@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { ColorChromeModule } from 'ngx-color/chrome';
 
@@ -19,6 +20,7 @@ import { FooterComponent } from './footer/footer.component';
     imports: [
         BrowserModule,
         AppRoutingModule,
+        FormsModule,
         ColorChromeModule
     ],
     providers: [],
