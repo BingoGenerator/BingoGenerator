@@ -44,7 +44,7 @@ module.exports = function (config) {
         logLevel: config.ERROR,
         autoWatch: true,
         browsers: ['FirefoxHeadless', 'ChromeHeadless'],
-        singleRun: false,
+        singleRun: true,
         restartOnFileChange: true
     });
 };
