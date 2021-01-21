@@ -1,5 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
+process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 module.exports = function (config) {
     config.set({
@@ -8,8 +9,9 @@ module.exports = function (config) {
         plugins: [
             require('karma-jasmine'),
             require('karma-firefox-launcher'),
+            require('karma-chrome-launcher'),
             require('karma-jasmine-html-reporter'),
-            require('karma-coverage-istanbul-reporter'),
+            require('karma-coverage'),
             require('@angular-devkit/build-angular/plugins/karma')
         ],
         client: {
@@ -26,7 +28,7 @@ module.exports = function (config) {
                 ]
             }
         },
-        coverageIstanbulReporter: {
+        coverageReporter: {
             dir: require('path').join(__dirname, './coverage/bingo-generator'),
             reports: ['html', 'lcovonly', 'text-summary'],
             fixWebpackSourcePaths: true,
@@ -39,10 +41,10 @@ module.exports = function (config) {
         reporters: ['progress', 'kjhtml'],
         port: 9876,
         colors: true,
-        logLevel: config.LOG_INFO,
+        logLevel: config.ERROR,
         autoWatch: true,
-        browsers: ['FirefoxHeadless'],
-        singleRun: true,
+        browsers: ['FirefoxHeadless', 'ChromeHeadless'],
+        singleRun: false,
         restartOnFileChange: true
     });
 };

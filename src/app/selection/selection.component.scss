@@ -22,6 +22,10 @@ div {
                 display: block;
                 margin: 0;
             }
+
+            textarea {
+                display: block;
+            }
         }
         
         .rowColSelect {
@@ -33,11 +37,14 @@ div {
                 input {
                     display: block;
                     margin-left: 0;
+                    margin-top: 4px;
+                    margin-bottom: 4px;
                 }
                 p {
                     display: block;
                     margin: 0;
                     margin-right: 8px;
+                    padding: 4px;
                 }
             }
         }
@@ -71,19 +78,6 @@ div {
                     display: inline-block;
                     margin-left: 0;
                 }
-            }
-        }
-
-        .delimiter-selection {
-            display: inline-block;
-            margin-right: 10px;
-            background-color: rgb(206, 202, 202);
-            border-radius: 4px;
-            padding: 5px;
-
-            input, p {
-                display: inherit;
-                margin: 5px 5px;
             }
         }
     }

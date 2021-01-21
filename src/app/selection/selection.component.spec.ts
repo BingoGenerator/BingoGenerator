@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { ColorChromeModule } from 'ngx-color/chrome';
+import { DetailBoardComponent } from '../detail-board/detail-board.component';
 import { Delimiters } from '../utilities/delimiters';
 import { Board } from '../utilities/interfaces';
 
@@ -10,9 +13,9 @@ describe('SelectionComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [SelectionComponent]
-        })
-            .compileComponents();
+            declarations: [SelectionComponent, DetailBoardComponent],
+            imports: [FormsModule, ColorChromeModule]
+        }).compileComponents();
     });
 
     beforeEach(() => {
@@ -88,23 +91,27 @@ describe('SelectionComponent', () => {
         expect(component.splitString("test;we;shall", Delimiters.find(x => x.displayName == ";"))).toEqual(["test", "we", "shall"]);
     });
 
-    it('trimEnd: ; - clean', () => {
-        expect(component.trimEnd("test;we;shall", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
+    it('splitString: , with empty elements', () => {
+        expect(component.splitString(",gds,, ,g,", Delimiters.find(x => x.displayName == ","))).toEqual(["","gds",""," ","g",""]);
     });
 
-    it('trimEnd: ; - end with space', () => {
-        expect(component.trimEnd("test;we;shall ", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
+    it('fixInvalidElements - clean', () => {
+        expect(component.fixInvalidElements(["test","we","shall"])).toEqual(["test","we","shall"]);
     });
 
-    it('trimEnd: ; - end with ;', () => {
-        expect(component.trimEnd("test;we;shall;", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
+    it('fixInvalidElements - end with space', () => {
+        expect(component.fixInvalidElements(["test","we",""])).toEqual(["test","we"," "]);
     });
 
-    it('trimEnd: ; - end with ; and space', () => {
-        expect(component.trimEnd("test;we;shall; ", Delimiters.find(x => x.displayName == ";"))).toEqual("test;we;shall");
+    it('fixInvalidElements - contain only spaces', () => {
+        expect(component.fixInvalidElements(["test","  ","shall"])).toEqual(["test"," ","shall"]);
     });
 
-    it('trimEnd: ; - empty string', () => {
-        expect(component.trimEnd("", Delimiters.find(x => x.displayName == ";"))).toEqual(" ");//Return string containing Alt + 255
+    it('fixInvalidElements - all elements empty', () => {
+        expect(component.fixInvalidElements(["","",""])).toEqual([" "," "," "]);
+    });
+
+    it('fixInvalidElements - empty array', () => {
+        expect(component.fixInvalidElements([])).toEqual([]);
     });
 });

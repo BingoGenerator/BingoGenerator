@@ -70,10 +70,12 @@ export class SelectionComponent implements OnInit {
     recreateContent() {
         this.boards = [];
         
-        if(this.rawString.length == 0) this.rawString = this.exampleText;
-        this.rawString = this.trimEnd(this.rawString, this.stringDelimiter);
+        if(this.rawString.length == 0) {
+            this.rawString = this.exampleText;
+        }
 
-        let elements: any[] = this.splitString(this.rawString, this.stringDelimiter);
+        let elements: string[] = this.splitString(this.rawString, this.stringDelimiter);
+        elements = this.fixInvalidElements(elements);
         for(let i = 0; i < this.numOfBoards; i++) {
             let list = Object.assign([], elements);
             this.boards.push(
@@ -86,31 +88,23 @@ export class SelectionComponent implements OnInit {
         }
     }
 
-    trimEnd(content: string, delimiter: Delimiter): string {
-        while(content.length > 0) {
-            content = content.trim();
-            if(content[content.length - 1] === delimiter.value) {
-                content = content.substring(0, content.length - 1);
-            } else {
-                break;
-            }
-        }
-        if(content.length === 0) {
-            content = " ";//Alt + 255
+    fixInvalidElements(content: string[]): string[] {
+        for(let i = 0; i < content.length; i++) {
+            if(content[i].length == 0 || content[i].trim().length == 0) content[i] = " ";//Alt + 255
         }
         return content;
     }
 
     splitString(content: string, delimiter: Delimiter): string[] {
         let list = [];
-        for(let result = 0, last = 0; result = content.indexOf(delimiter.value, last);) {
+        for(let result = 0, last = 0; true; last = result + 1) {
+            result = content.indexOf(delimiter.value, last);
             if(result === -1) {
                 list.push(content.slice(last, content.length));
                 break;
             } else {
                 list.push(content.slice(last, result));
             }
-            last = result + 1;
         }
         return list;
     }

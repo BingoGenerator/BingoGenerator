@@ -16,6 +16,7 @@ describe('DetailBoardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DetailBoardComponent);
     component = fixture.componentInstance;
+    component.content = [[["", "", ""], ["", "", ""], ["", "", ""]]];
     fixture.detectChanges();
   });
 

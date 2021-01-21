@@ -5,15 +5,25 @@
             <div class="text-input settings-section">
                 <p>Content:</p>
                 <textarea (input)="valueChanged($event.target.value, 'rawString')"></textarea>
+                <p style="display: inline-block;">Delimiter:</p>
+                <select class="settings-section" [ngModel]="stringDelimiter" (ngModelChange)="valueChanged($event, 'stringDelimiter')">
+                    <option *ngFor="let delimiter of delimiters" [ngValue]="delimiter">
+                        <b>{{delimiter.displayName}}</b>
+                    </option>
+                </select>
             </div>
             <div class="rowColSelect settings-section">
                 <div>
                     <p>Rows:</p>
                     <p>Columns:</p>
+                    <p>Cell width:</p>
+                    <p>Cell height:</p>
                 </div>
                 <div>
                     <input type="number" min="1" [ngModel]="rows" (ngModelChange)="valueChanged($event, 'rows')" />
                     <input type="number" min="1" [ngModel]="columns" (ngModelChange)="valueChanged($event, 'columns')" />
+                    <input min="5" type="number" [ngModel]="cellWidth" (ngModelChange)="valueChanged($event, 'cellWidth')" />
+                    <input min="5" type="number" [ngModel]="cellHeight" (ngModelChange)="valueChanged($event, 'cellHeight')" />
                 </div>
             </div>
             <div class="others settings-section">
@@ -26,14 +36,6 @@
                     <input type="checkbox" [ngModel]="doShuffle" (ngModelChange)="valueChanged($event, 'doShuffle')" />
                 </div>
                 <div>
-                    <p>Cell width:</p>
-                    <input min="5" type="number" [ngModel]="cellWidth" (ngModelChange)="valueChanged($event, 'cellWidth')" />
-                </div>
-                <div>
-                    <p>Cell height:</p>
-                    <input min="5" type="number" [ngModel]="cellHeight" (ngModelChange)="valueChanged($event, 'cellHeight')" />
-                </div>
-                <div>
                     <p>Border width:</p>
                     <input min="0" disabled type="number" [ngModel]="cellBorderWidth" (ngModelChange)="valueChanged($event, 'cellBorderWidth')" />
                 </div>
@@ -44,12 +46,6 @@
                 </div>
             </div>
         </div>
-        <p style="display: inline-block;">Delimiter:</p>
-        <select class="settings-section" [ngModel]="stringDelimiter" (ngModelChange)="valueChanged($event, 'stringDelimiter')">
-            <option *ngFor="let delimiter of delimiters" [ngValue]="delimiter">
-                <b>{{delimiter.displayName}}</b>
-            </option>
-        </select>
     </div>
     <div class="board-section">
         <app-detail-board *ngFor="let board of boards" [content]="board" [tileHeight]="cellHeight" [tileWidth]="cellWidth" [tileBorderWidth]="cellBorderWidth" [borderColor]="cellBorderColor"></app-detail-board>
